@@ -1,5 +1,10 @@
 // TODO hér vantar að sækja viðeigandi föll úr öðrum modules
 import { show } from './lib/ui.js';
+import { createButtons } from './lib/ui.js';
+
+import { isValidBestOf } from './lib/rock-paper-scissors.js';
+
+show('start');
 
 /** Hámarks fjöldi best-of leikja, ætti að vera jákvæð heiltala stærri en 0 */
 const MAX_BEST_OF = 10;
@@ -70,6 +75,12 @@ function playRound(player) {
  */
 function round(e) {
   // TODO útfæra
+  let isRoundsOk = isValidBestOf(e, MAX_BEST_OF);
+  if (!isRoundsOk) {
+    alert("Það er eitthvað að! Hafðu samband við tæknideild samstundis!")
+  }
+
+  console.log(e);
 }
 
 // Takki sem byrjar leik
@@ -78,7 +89,11 @@ document
   .addEventListener('click', () => show('rounds'));
 
 // Búum til takka
-// createButtons(MAX_BEST_OF, round);
+createButtons(1, () => {round(1)})
+createButtons(3, () => {round(3)});
+createButtons(5, () => {round(5)})
+createButtons(7, () => {round(7)})
+createButtons(9, () => {round(9)})
 
 // Event listeners fyrir skæri, blað, steinn takka
 // TODO
