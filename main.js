@@ -1,4 +1,3 @@
-// TODO hér vantar að sækja viðeigandi föll úr öðrum modules
 import { show, createButtons, updateResultScreen} from './lib/ui.js';
 import { computerPlay, isValidBestOf, playAsText, checkGame } from './lib/rock-paper-scissors.js';
 
@@ -54,14 +53,7 @@ function playRound(player) {
   let computerToString = computer.toString();
   let computerString = playAsText(computerToString);
 
-  console.log("PlayerText: " + playerString);
-  console.log("computerText: " + computerString);
-
-  console.log("Player: " + player);
-  console.log("computer play: " + computer);
-
   const checkedResaults = checkGame(Number.parseInt(player), Number.parseInt(computer));
-  console.log("From checkgame: " + checkedResaults);
 
   let resaultText;
 
@@ -123,8 +115,6 @@ function round(e) {
   }
   totalRounds = nORounds;
   show('play');
-  console.log(nORounds);
-  console.log(nORounds);
 }
 
 // Takki sem byrjar leik
@@ -140,14 +130,13 @@ createButtons(7, () => {round(7)})
 createButtons(9, () => {round(9)})
 
 // Event listeners fyrir skæri, blað, steinn takka
-// TODO
 
 // Takki fyrir SKÆRI
 document
   .querySelector('button.scissor')
   .addEventListener('click', () => {playRound(1)});
 
-  // Takki fyrir BLAÐ
+// Takki fyrir BLAÐ
 document
 .querySelector('button.paper')
 .addEventListener('click', () => {playRound(2)});
@@ -166,8 +155,6 @@ document
 document
 .querySelector('button.finishGame')
 .addEventListener('click', () => {finishGame()});
-
-
 
   /**
  * Uppfærir stöðu yfir alla spilaða leiki þegar leik lýkur.
@@ -228,12 +215,10 @@ function finishGame() {
   // Leik bætt á leikjalista
 
   const scoreList = document.querySelector('.games__list');
-  
+
   const latestGame = document.createElement('li');
   latestGame.textContent = "Leikmaður " + textForRoundList + " " + playerWins + " - " + computerWins;
   scoreList.appendChild(latestGame);
-
-
 
 // Núllstillum breytur
 
@@ -247,7 +232,7 @@ computerWins = 0;
 
 playerWon = false;
 
-  // Byrjum nýjan leik!
+// Byrjum nýjan leik!
 show('start');
 
 }
