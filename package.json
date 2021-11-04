@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "scripts.js",
   "scripts": {
+    "build": "cpy './*.html' './*.js' './*.css' './lib/*.js' ./build/ --parents",
     "dev": "browser-sync start --server --files main.js **/*.js styles.css index.html"
   },
   "keywords": [],
@@ -10,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.27.5"
+  },
+  "dependencies": {
+    "cpy-cli": "^3.1.1"
   }
 }
