@@ -2,8 +2,6 @@
 import { show, createButtons, updateResultScreen} from './lib/ui.js';
 import { computerPlay, isValidBestOf, playAsText, checkGame } from './lib/rock-paper-scissors.js';
 
-show('start');
-
 /** Hámarks fjöldi best-of leikja, ætti að vera jákvæð heiltala stærri en 0 */
 const MAX_BEST_OF = 10;
 
@@ -195,6 +193,14 @@ function finishGame() {
     win: playerWon,
   }
 
+  let textForRoundList;
+
+  if (playerWon) {
+    textForRoundList = "vann!";
+  } else {
+    textForRoundList = "tapaði :(";
+  }
+
   games.push(gameInfo);
 
   // Uppfærum stöðu
@@ -218,6 +224,16 @@ function finishGame() {
 
   const losingRatio = document.querySelector('.games__lossratio');
   losingRatio.textContent = lossRatio;
+
+  // Leik bætt á leikjalista
+
+  const scoreList = document.querySelector('.games__list');
+  
+  const latestGame = document.createElement('li');
+  latestGame.textContent = "Leikmaður " + textForRoundList + " " + playerWins + " - " + computerWins;
+  scoreList.appendChild(latestGame);
+
+
 
 // Núllstillum breytur
 
